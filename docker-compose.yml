@@ -1,9 +1,20 @@
-version: '3'
+version: '3.0'
 services:
+  fasttext_api:
+    container_name: fasttext_api
+    build: .
+    command: python manage.py runserver 0.0.0.0:8080
+    volumes:
+      - .:/code
+    ports:
+      - 8080:8080
+    environment:
+      DJANGO_SECRET_KEY: $DJANGO_SECRET_KEY
+      DJANGO_DEBUBG: $DJANGO_DEBUBG
   fasttext:
-      command: /bin/bash
-      image: xebxeb/fasttext-docker
-      volumes:
-       - ./data/data:/data 
-       - ./data/results:/results
-       - ./data/mytests:/mytests
+    command: /bin/bash
+    image: xebxeb/fasttext-docker
+    volumes:
+     - ./data/data:/data 
+     - ./data/results:/results
+     - ./data/mytests:/mytests
