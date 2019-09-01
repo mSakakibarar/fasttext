@@ -1,0 +1,9 @@
+version: '3'
+services:
+  fasttext:
+      command: /bin/bash
+      image: xebxeb/fasttext-docker
+      volumes:
+       - ./data/data:/data 
+       - ./data/results:/results
+       - ./data/mytests:/mytests
